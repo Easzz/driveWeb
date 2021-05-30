@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="../lib/layui-v2.6.3/css/layui.css" media="all">
     <link rel="stylesheet" href="../css/public.css" media="all">
-	<link rel="stylesheet" href="../lib/jq-module/zyupload/zyupload-1.0.0.min.css" media="all">
 </head>
 <body>
 <div class="layuimini-container">
@@ -25,7 +24,7 @@
 
 
 			<div class="layui-form-item">
-			    <label class="layui-form-label">请选择项目</label>
+			    <label class="layui-form-label">请选择</label>
 			    <div class="layui-input-inline">
 
 			        <select id="project" name="projectId" lay-search lay-verify="required" name="project">
@@ -33,6 +32,13 @@
 			        </select>
 
 			    </div>
+				<div class="layui-input-inline">
+					<select lay-verify="required"  name="platform">
+						<option value="">请选择平台</option>
+						<option value="win7">win7</option>
+						<option value="win10">win10</option>
+					</select>
+				</div>
 			    <div class="layui-input-inline">
 			        <select lay-verify="required"  name="driveName">
 			            <option value="">请选择驱动类</option>
@@ -46,13 +52,7 @@
 						<option value="Bluetooth">Bluetooth</option>
 			        </select>
 			    </div>
-			    <div class="layui-input-inline">
-			        <select lay-verify="required"  name="platform">
-			            <option value="">请选择平台</option>
-			            <option value="win7">win7</option>
-			            <option value="win10">win10</option>
-			        </select>
-			    </div>
+
 			    <!-- <div class="layui-form-mid layui-word-aux">此处只是演示联动排版，并未做联动交互</div> -->
 			</div>
 
@@ -69,28 +69,34 @@
                     <input type="text" id="driveDate" name="driveDate" lay-verify="required" placeholder="请输入日期" autocomplete="off" class="layui-input">
                 </div>
             </div>
-
-
 			<div class="layui-form-item">
-			    <label class="layui-form-label">文件</label>
-				<input type="hidden" id="url" name="url"/>
-			    <div class="layui-input-block">
-			       	<!-- <input type="file" name="file" id="test20"> -->
-				   <div class="layui-upload">
-				     <button type="button" class="layui-btn" id="test1">上传文件</button>
-				     <div class="layui-upload-list">
-				       <img class="layui-upload-img" >
-				       <p id="demoText"></p>
-				     </div>
-				     <div style="width: 95px;">
-				       <div class="layui-progress layui-progress-big" lay-showpercent="yes" lay-filter="demo">
-				         <div class="layui-progress-bar" lay-percent=""></div>
-				       </div>
-				     </div>
-				   </div>
-			    </div>
-					 <a name="list-progress"> </a>
+				<label class="layui-form-label">文件路径</label>
+				<div class="layui-input-block">
+					<input type="text" name="url" lay-verify="required" placeholder="请输入文件路径" autocomplete="off" class="layui-input">
+				</div>
 			</div>
+
+
+<!--			<div class="layui-form-item">-->
+<!--			    <label class="layui-form-label">文件</label>-->
+<!--				<input type="hidden" id="url" name="url"/>-->
+<!--			    <div class="layui-input-block">-->
+<!--			       	&lt;!&ndash; <input type="file" name="file" id="test20"> &ndash;&gt;-->
+<!--				   <div class="layui-upload">-->
+<!--				     <button type="button" class="layui-btn" id="test1">上传文件</button>-->
+<!--				     <div class="layui-upload-list">-->
+<!--				       <img class="layui-upload-img" >-->
+<!--				       <p id="demoText"></p>-->
+<!--				     </div>-->
+<!--				     <div style="width: 95px;">-->
+<!--				       <div class="layui-progress layui-progress-big" lay-showpercent="yes" lay-filter="demo">-->
+<!--				         <div class="layui-progress-bar" lay-percent=""></div>-->
+<!--				       </div>-->
+<!--				     </div>-->
+<!--				   </div>-->
+<!--			    </div>-->
+<!--					 <a name="list-progress"> </a>-->
+<!--			</div>-->
 
 
 			<div style="margin-top: 100px;">
@@ -113,7 +119,7 @@
 
 <script src="../lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
 <script src="../js/jquery-3.5.1.min.js" charset="utf-8"></script>
-<script src="../lib/jq-module/zyupload/zyupload-1.0.0.min.js" charset="utf-8"></script>
+<script src="../js/common.js"></script>
 
 <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 <script>
@@ -142,7 +148,7 @@
 
 			$(function() {
 					$.ajax({
-						url: 'http://129.204.3.98:8020/project/getProjectList',
+						url: apiUrl+'/project/getProjectList',
 						type: 'get',
 						dataType: 'json',
 						success: function(res) {
@@ -186,7 +192,7 @@
 				    layer.msg('上传中', {icon: 16, time: 0});
 				  }
 					 // ,size: 60 //限制文件大小，单位 KB
-					,url: "http://129.204.3.98:8020/file/upload",  // 上传文件的路径 //改成您自己的上传接口
+					,url: apiUrl+"/file/upload",  // 上传文件的路径 //改成您自己的上传接口
 					  exts: 'zip|rar|7z|exe' ,//只允许上传压缩文件
 				  done: function(res){
 				    //如果上传失败
@@ -225,16 +231,16 @@
 
 	function addBook() {
 
-		if($("#url").val()==''){
-			layer.msg("请上传附件");
-			return false;
-		}
+		// if($("#url").val()==''){
+		// 	layer.msg("请上传附件");
+		// 	return false;
+		// }
 
 	         var data=$("form").serialize(); //输出字符串
 	                // console.log($("form").serializeArray()); //输出数组
 
 	 	$.ajax({
-	 		url: 'http://129.204.3.98:8020/project/saveItem',
+	 		url: apiUrl+'/project/saveItem',
 	 		type: 'get',
 	 		dataType: 'json',
 	 		// data: JSON.stringify(data),

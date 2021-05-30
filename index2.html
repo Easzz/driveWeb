@@ -129,15 +129,29 @@
 </div>
 <script src="lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
 <script src="js/lay-config.js?v=2.0.0" charset="utf-8"></script>
+<script src="page/ff/sdf/common.js"></script>
 <script>
+
+
     layui.use(['jquery', 'layer', 'miniAdmin','miniTongji'], function () {
+
+     var loginType=  localStorage.getItem("loginType");
+     var initUrl;
+     if (loginType=='admin'){
+         initUrl="api/adminInit.json"
+     }
+     if (loginType=='user'){
+         initUrl="api/userInit.json"
+     }
+
+
         var $ = layui.jquery,
             layer = layui.layer,
             miniAdmin = layui.miniAdmin,
             miniTongji = layui.miniTongji;
 
         var options = {
-            iniUrl: "api/init.json",    // 初始化接口
+            iniUrl: initUrl,    // 初始化接口
             clearUrl: "api/clear.json", // 缓存清理接口
             urlHashLocation: true,      // 是否打开hash定位
             bgColorDefault: false,      // 主题默认配置
@@ -161,7 +175,8 @@
 
         $('.login-out').on("click", function () {
             layer.msg('退出登录成功', function () {
-                window.location = 'page/login-3.html';
+                localStorage.removeItem("loginType")
+                window.location = 'page/login.html';
             });
         });
     });

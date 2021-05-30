@@ -24,7 +24,7 @@
                                 <input type="text" id="projectName" name="projectName" autocomplete="off" class="layui-input">
                             </div>
                         </div>
-                       
+
                         <div class="layui-inline">
                             <button type="submit" class="layui-btn layui-btn-primary"  lay-submit lay-filter="data-search-btn"><i class="layui-icon"></i> 搜 索</button>
                         </div>
@@ -50,6 +50,7 @@
     </div>
 </div>
 <script src="../lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+<script src="../js/common.js"></script>
 <script>
     layui.use(['form', 'table'], function () {
         var $ = layui.jquery,
@@ -58,7 +59,7 @@
 
         table.render({
             elem: '#currentTableId',
-          	url: 'http://localhost:8020/project/getProjectList',
+          	url: apiUrl+'/project/getProjectList',
             toolbar: '#toolbarDemo',
             defaultToolbar: ['filter', 'exports', 'print', {
                 title: '提示',
@@ -69,8 +70,8 @@
                 // {type: "checkbox", width: 50},
                 {field: 'id',  title: 'ID'},
                 {field: 'projectName',  title: '用户名'},
-                
-            
+
+
             ]],
             limits: [10, 15, 20, 25, 50, 100],
             limit: 15,
@@ -81,7 +82,7 @@
         // 监听搜索操作
         form.on('submit(data-search-btn)', function (data) {
             var result = JSON.stringify(data.field);
-			
+
             // layer.alert(result, {
             //     title: '最终的搜索信息'
             // });
