@@ -97,8 +97,8 @@
 								if(d.win7SubList!=null){
 
 								if (!d.win7SubList[0].url == '') {
-									return '<a class="layui-table-link" href="' +fileServerUrl+ d.win7SubList[0]
-										.url + '">版本:' + d.win7SubList[0].version + '</a> </br>' + d
+									return '版本：<a class="layui-table-link" href="' +fileServerUrl+ d.win7SubList[0]
+										.url + '">' + d.win7SubList[0].version + '</a> </br>日期：' + d
 										.win7SubList[0].driveDate + '';
 								}
 								}else {
@@ -116,8 +116,8 @@
 								if(d.win10SubList!=null){
 
 								if (!d.win10SubList[0].url == '') {
-									return '<a class="layui-table-link" href="'+fileServerUrl + d.win10SubList[0]
-										.url + '">版本:' + d.win10SubList[0].version + '</a> </br>' + d
+									return '版本：<a class="layui-table-link" href="'+fileServerUrl + d.win10SubList[0]
+										.url + '">' + d.win10SubList[0].version + '</a> </br>日期：' + d
 										.win10SubList[0].driveDate + '';
 								}	} else {
 									return '-';

@@ -51,6 +51,9 @@
 </div>
 <script src="../lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
 <script src="../js/common.js"></script>
+<script type="text/html" id="zizeng">
+    {{d.LAY_TABLE_INDEX+1}}
+</script>
 <script>
     layui.use(['form', 'table'], function () {
         var $ = layui.jquery,
@@ -69,7 +72,7 @@
             cols: [[
                 // {type: "checkbox", width: 50},
                 {field: 'id',  title: 'ID'},
-                {field: 'projectName',  title: '用户名'},
+                {field: 'projectName',  title: '项目名'},
 
 
             ]],

@@ -182,6 +182,20 @@
             //     window.location = 'login.html';
             // });
         });
+
+
+
+
+        $('#layuiminiHomeTabId').on("click", function () {
+            console.log("123")
+            $(".layui-tab-item.layui-show").find("iframe")[0].contentWindow.location="search.html";
+
+        });
+
+
+
+
+
     });
 </script>
 </body>
