@@ -42,18 +42,24 @@
 			    <div class="layui-input-inline">
 			        <select lay-verify="required"  name="driveName">
 			            <option value="">请选择驱动类</option>
-			            <option value="Graphic">Graphic</option>
-			            <!-- <option value="宁波" disabled="">宁波</option> -->
+						<option value="Audio">Audio</option>
+						<option value="Bluetooth">Bluetooth</option>
+						<option value="Chipset">Chipset</option>
+						<option value="Graphic">Graphic</option>
 			            <option value="LAN">LAN</option>
-			            <option value="Audio">Audio</option>
-			            <option value="Chipset">Chipset</option>
 						<option value="ME">ME</option>
 						<option value="Wifi">Wifi</option>
-						<option value="Bluetooth">Bluetooth</option>
+
 			        </select>
 			    </div>
 
 			    <!-- <div class="layui-form-mid layui-word-aux">此处只是演示联动排版，并未做联动交互</div> -->
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">芯片</label>
+				<div class="layui-input-block">
+					<input type="text" name="manufacturer" lay-verify="required" autocomplete="off" placeholder="请输入芯片类型" class="layui-input">
+				</div>
 			</div>
 
             <div class="layui-form-item">
@@ -73,6 +79,13 @@
 				<label class="layui-form-label">文件路径</label>
 				<div class="layui-input-block">
 					<input type="text" name="url" lay-verify="required" placeholder="请输入文件路径" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">说明</label>
+				<div class="layui-input-block">
+					<input type="text" name="description" lay-verify="required" autocomplete="off" placeholder="请输入说明" class="layui-input">
 				</div>
 			</div>
 
