@@ -2,10 +2,11 @@
 // var apiUrl="http://129.204.3.98:8020";
 // var fileServerUrl="http://129.204.3.98:8888";
 
-
-
 var apiUrl="http://localhost:8020";
 var fileServerUrl="http://localhost:8888";
+
+// var apiUrl="http://10.100.7.195:8020";
+// var fileServerUrl="http://10.100.7.195:8888";
 
 //login?
 judgeLogin();
@@ -31,6 +32,10 @@ function judgeUrlPermission() {
             window.location.href = "login.html";
         }
         if (url.indexOf("addProject.html") != -1) {
+            alert("无权访问");
+            window.location.href = "login.html";
+        }
+        if (url.indexOf("addTerrace.html") != -1) {
             alert("无权访问");
             window.location.href = "login.html";
         }

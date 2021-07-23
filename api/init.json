@@ -10,7 +10,7 @@
   },
   "menuInfo": [
     {
-      "title": "常规管理",
+      "title": "驱动信息",
       "icon": "fa fa-address-book",
       "href": "",
       "target": "_self",
@@ -22,7 +22,7 @@
           "target": "_self",
           "child": [
             {
-              "title": "搜索页面",
+              "title": "驱动搜索",
               "href": "page/ff/search.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
