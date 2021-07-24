@@ -21,7 +21,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">平台名称</label>
                             <div class="layui-input-inline">
-                                <input type="text" id="Name" name="projectName" autocomplete="off" class="layui-input">
+                                <input type="text" id="Name" name="terraceName" autocomplete="off" class="layui-input">
                             </div>
                         </div>
 
@@ -62,7 +62,7 @@
 
         table.render({
             elem: '#currentTableId',
-          	url: apiUrl+'/project/getProjectList',
+          	url: apiUrl+'/terrace/getTerraceList',
             toolbar: '#toolbarDemo',
             defaultToolbar: ['filter', 'exports', 'print', {
                 title: '提示',
@@ -72,7 +72,7 @@
             cols: [[
                 // {type: "checkbox", width: 50},
                 {field: 'id',  title: 'ID'},
-                {field: 'projectName',  title: '项目名'},
+                {field: 'terraceName',  title: '平台名'},
                 {field: 'gmtCreate',  title: '创建时间'}
 
             ]],
@@ -96,7 +96,7 @@
                     curr: 1
                 }
                 , where: {
-                    projectName: $("#projectName").val()
+                    terraceName: $("#terraceName").val()
                 }
             }, 'data');
 
@@ -115,7 +115,7 @@
                     maxmin:true,
                     shadeClose: true,
                     area: ['50%', '50%'],
-                    content: 'addProject.html',
+                    content: 'addTerrace.html',
                 });
                 $(window).on("resize", function () {
                     layer.full(index);

@@ -22,13 +22,20 @@
             <input type="text" name="projectName" lay-verify="required" lay-reqtext="项目名不能为空" placeholder="请输入项目名" value="" class="layui-input">
             <tip></tip>
         </div>
+
+        <label class="layui-form-label required">平台名</label>
+        <div class="layui-input-block">
+        <select id="terrace" name="terraceId" lay-search lay-verify="required">
+            <option value="">请选择平台</option>
+        </select>
+        </div>
     </div>
 
 
 
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <button id="btn" class="layui-btn layui-btn-normal" lay-filter="saveBtn">确认保存</button>
+            <button id="btn" class="layui-btn layui-btn-normal" lay-submit="" lay-filter="demo1" >确认保存</button>
         </div>
     </div>
 </form>
@@ -42,46 +49,113 @@
         var form = layui.form,
             layer = layui.layer;
 
-
-	$("#btn").on('click', function() {
-
-				        var data=$("form").serialize(); //输出字符串
-				               // console.log($("form").serializeArray()); //输出数组
-
-					$.ajax({
-						url: apiUrl+'/project/save',
-						type: 'get',
-						dataType: 'json',
-						// data: JSON.stringify(data),
-						data: data,
-						success: function(res) {
-							console.log(res)
-							if(res.code==1){
-
-								layer.msg(res.msg);
-								return false;
-							}
-							if(res.code==0){
-								// layer.msg("添加成功");
-								// $('form')[0].reset();
-
-
-								 layer.alert("修改成功", {icon: 6}, function () {
-								                           // 获得frame索引
-								                           var index = parent.layer.getFrameIndex(window.name);
-								                           //关闭当前frame
-								                           parent.layer.close(index);
-								                           //修改成功后刷新父界面
-								                           window.parent.location.reload();
-								                       });
+        $(function() {
+            $.ajax({
+                url: apiUrl+'/terrace/getTerraceList',
+                type: 'get',
+                dataType: 'json',
+                success: function(res) {
+                    //方法中传入的参数data为后台获取的数据
+                    var role = document.getElementById("terrace");
+                    var data = res.data;
+                    for (var i = 0; i < data.length; i++) {
+                        var id = data[i].id;
+                        var value = data[i].terraceName;
+                        //   alert(value+label);
+                        var option = document.createElement("option"); // 创建添加option属性
+                        option.setAttribute("value", id); // 给option的value添加值
+                        option.setAttribute("data-id", id);
+                        option.innerText = value; // 打印option对应的纯文本
+                        role.appendChild(option); //给select添加option子标签
+                    }
+                    form.render("select");
+                }
+            })
+        })
 
 
-								return false;
-							}
-						}
-					})
-				return false;
-				});
+        //监听提交
+        form.on('submit(demo1)', function (data) {
+
+            addBook();
+            return false;
+        });
+
+        function addBook() {
+            var data=$("form").serialize(); //输出字符串
+            $.ajax({
+                url: apiUrl+'/project/save',
+                type: 'get',
+                dataType: 'json',
+                // data: JSON.stringify(data),
+                data: data,
+                success: function(res) {
+                    console.log(res)
+                    if(res.code==1){
+
+                        layer.msg(res.msg);
+                        return false;
+                    }
+                    if(res.code==0){
+                        // layer.msg("添加成功");
+                        // $('form')[0].reset();
+
+
+                        layer.alert("修改成功", {icon: 6}, function () {
+                            // 获得frame索引
+                            var index = parent.layer.getFrameIndex(window.name);
+                            //关闭当前frame
+                            parent.layer.close(index);
+                            //修改成功后刷新父界面
+                            window.parent.location.reload();
+                        });
+
+
+                        return false;
+                    }
+                }
+            })
+            return false;
+        };
+
+        // $("#btn").on('click', function() {
+        // var data=$("form").serialize(); //输出字符串
+		// 		               // console.log($("form").serializeArray()); //输出数组
+        //
+		// 			$.ajax({
+		// 				url: apiUrl+'/project/save',
+		// 				type: 'get',
+		// 				dataType: 'json',
+		// 				// data: JSON.stringify(data),
+		// 				data: data,
+		// 				success: function(res) {
+		// 					console.log(res)
+		// 					if(res.code==1){
+        //
+		// 						layer.msg(res.msg);
+		// 						return false;
+		// 					}
+		// 					if(res.code==0){
+		// 						// layer.msg("添加成功");
+		// 						// $('form')[0].reset();
+        //
+        //
+		// 						 layer.alert("修改成功", {icon: 6}, function () {
+		// 						                           // 获得frame索引
+		// 						                           var index = parent.layer.getFrameIndex(window.name);
+		// 						                           //关闭当前frame
+		// 						                           parent.layer.close(index);
+		// 						                           //修改成功后刷新父界面
+		// 						                           window.parent.location.reload();
+		// 						                       });
+        //
+        //
+		// 						return false;
+		// 					}
+		// 				}
+		// 			})
+		// 		return false;
+		// 		});
         //监听提交
         // form.on('submit(saveBtn)', function (data) {
         //     var index = layer.alert(JSON.stringify(data.field), {

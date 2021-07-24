@@ -28,6 +28,12 @@
               "target": "_self"
             },
             {
+              "title": "添加平台",
+              "href": "terraceList.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
               "title": "添加项目",
               "href": "projectList.html",
               "icon": "fa fa-tachometer",

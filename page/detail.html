@@ -65,9 +65,31 @@
 
 	layui.use('table', function () {
 		var projectName = getUrlParam("projectName");
+		var projectId=getUrlParam("projectId");
+
+		$.ajax({
+			url: apiUrl+'/project/info',
+			type: 'get',
+			dataType: 'json',
+			 data: {"projectId":projectId},
+			// data: data,
+			success: function(res) {
+				console.log(res)
+				if(res.code==1){
+					layer.msg(res.msg);
+					return false;
+				}
+				if(res.code==0){
+					$("#projectName").text(res.data.projectName+'('+res.data.terraceName+')');
+					return false;
+				}
+			}
+		})
+
+
 
 		// var msg =decodeURI(getUrlParam('projectName'))
-		$("#projectName").text(projectName);
+		// $("#projectName").text(projectName);
 
 		var table = layui.table;
 
@@ -91,8 +113,11 @@
 						title: '芯片名',
 						width: '15%'
 					},
-	
-
+					// {
+					// 	field: 'terraceName',
+					// 	title: '平台名',
+					// 	width: '6%'
+					// },
 					{
 						field: 'win7SubList',
 						title: 'win10',
