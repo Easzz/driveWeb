@@ -1,7 +1,7 @@
 {
   "homeInfo": {
     "title": "首页",
-    "href": "search.html"
+    "href": "terraceInfo.html"
   },
   "logoInfo": {
     "title": "驱动管理",
@@ -22,7 +22,19 @@
           "target": "_self",
           "child": [
             {
-              "title": "驱动搜索",
+              "title": "首页",
+              "href": "terraceInfo.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "平台搜索",
+              "href": "terraceSearch.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "项目搜索",
               "href": "search.html",
               "icon": "fa fa-tachometer",
               "target": "_self"

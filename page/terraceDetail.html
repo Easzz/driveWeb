@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+
+
+	<link rel="stylesheet" href="../lib/layui-v2.6.3/css/layui.css" media="all">
+
+	<script src="../lib/layui-v2.6.3/layui.js"></script>
+	<script src="../js/jquery-3.5.1.min.js"></script>
+	<script src="../js/common.js"></script>
+
+	<style>
+        .layui-table-cell {
+            height: inherit;
+        }
+
+        .layui-table-cell {
+            height: auto;
+        }
+	</style>
+	<script>
+		//获取url中的参数
+		// function getUrlParam(name) {
+		// 	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+		// 	var r = window.location.search.substr(1).match(reg); //匹配目标参数
+		// 	if (r != null) return unescape(r[2]);
+		// 	return null; //返回参数值
+		// }
+
+		function getUrlParam(name) {
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+			var r = window.location.search.substr(1).match(reg);
+			if (r != null) return decodeURI(r[2]);
+			return null;
+		}
+	</script>
+
+
+</head>
+<body>
+<br>
+
+<blockquote class="layui-elem-quote layui-text">
+	平台：<label id="terraceName">12312</label><br/>
+</blockquote>
+
+<table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+
+</body>
+<script>
+
+
+	layui.use('table', function () {
+		var terraceName = getUrlParam("terraceName");
+		var terraceId=getUrlParam("terraceId");
+
+		// var msg =decodeURI(getUrlParam('projectName'))
+		$("#terraceName").text(terraceName);
+
+		var table = layui.table;
+
+		table.render({
+			elem: '#currentTableId',
+			url: apiUrl+'/project/getProjectList',
+			toolbar: '#currentTableBar',
+			where:{terraceId:terraceId},
+			parseData: function(res){ //res 即为原始返回的数据
+				return {
+					"code": res.code, //解析接口状态
+					"msg": res.msg, //解析提示文本
+					"count": res.data.total, //解析数据长度
+					"data": res.data.records //解析数据列表
+				};
+			},
+			defaultToolbar: ['filter', 'exports', 'print', {
+				title: '提示',
+				layEvent: 'LAYTABLE_TIPS',
+				icon: 'layui-icon-tips'
+			}],
+			cols: [[
+				// {type: "checkbox", width: 50},
+				{field: 'id',  title: 'ID'},
+				{field: 'projectName',  title: '项目名'},
+				{field: 'gmtCreate',  title: '创建时间'}
+			]],
+			// limits: [10, 15, 20, 25, 50, 100],
+			// limit: 15,
+			page: false,
+			skin: 'line'
+		});
+
+	});
+
+</script>
+</html>

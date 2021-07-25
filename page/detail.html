@@ -52,26 +52,22 @@
 <br>
 
 <blockquote class="layui-elem-quote layui-text">
-	<label>平台：12312</label><br/>
-	<label>项目：12312</label>
+	平台：<label id="terraceName">12312</label><br/>
+	项目：<label id="projectName">12312</label>
 </blockquote>
 <!--<label>平台：12312</label>-->
 <!--<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">-->
 <!--	<legend id="projectName">方框风格的表单集合</legend>-->
 <!--</fieldset>-->
 
-
 <table id="demo" lay-filter="test"></table>
-
 
 </body>
 <script>
 
 
 	layui.use('table', function () {
-		var projectName = getUrlParam("projectName");
 		var projectId=getUrlParam("projectId");
-
 		$.ajax({
 			url: apiUrl+'/project/info',
 			type: 'get',
@@ -85,12 +81,12 @@
 					return false;
 				}
 				if(res.code==0){
-					$("#projectName").text(res.data.projectName+'('+res.data.terraceName+')');
+					$("#projectName").text(res.data.projectName);
+					$("#terraceName").text(res.data.terraceName);
 					return false;
 				}
 			}
 		})
-
 
 
 		// var msg =decodeURI(getUrlParam('projectName'))
