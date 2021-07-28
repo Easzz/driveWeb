@@ -81,8 +81,13 @@
 					return false;
 				}
 				if(res.code==0){
+
+					var html='<a class="layui-blue" href="terraceDetail.html?terraceId='+res.data.terraceId+'&terraceName='+res.data.terraceName+'">'+res.data.terraceName+'</a>';
+
 					$("#projectName").text(res.data.projectName);
-					$("#terraceName").text(res.data.terraceName);
+					// $("#terraceName").text(res.data.terraceName);
+					$("#terraceName").html(html);
+
 					return false;
 				}
 			}

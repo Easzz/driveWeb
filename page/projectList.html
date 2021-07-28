@@ -8,6 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="../lib/layui-v2.6.3/css/layui.css" media="all">
     <link rel="stylesheet" href="../css/public.css" media="all">
+    <style>
+        a{
+            color: #01AAED;
+        }
+    </style>
 </head>
 <body>
 <div class="layuimini-container">
@@ -55,6 +60,15 @@
     {{d.LAY_TABLE_INDEX+1}}
 </script>
 <script>
+
+    function pHtml(d) {
+        return '<a class="layui-blue" href="detail.html?projectId='+d.id+'">'+d.projectName+'</a>'
+    }
+
+    function tHtml(d) {
+        return '<a class="layui-blue" href="terraceDetail.html?terraceId='+d.terraceId+'&terraceName='+d.terraceName+'">'+d.terraceName+'</a>'
+    }
+
     layui.use(['form', 'table'], function () {
         var $ = layui.jquery,
             form = layui.form,
@@ -80,14 +94,14 @@
             cols: [[
                 // {type: "checkbox", width: 50},
                 {field: 'id',  title: 'ID'},
-                {field: 'projectName',  title: '项目名'},
-                {field: 'terraceName',  title: '平台名'},
+                {field: 'projectName',  title: '项目名', templet: pHtml},
+                {field: 'terraceName',  title: '平台名', templet: tHtml},
                 {field: 'gmtCreate',  title: '创建时间'}
 
             ]],
             limits: [10, 15, 20, 25, 50, 100],
             limit: 15,
-            page: false,
+            page: true,
             skin: 'line'
         });
 

@@ -57,7 +57,7 @@
                 success: function(res) {
                     //方法中传入的参数data为后台获取的数据
                     var role = document.getElementById("terrace");
-                    var data = res.data;
+                    var data = res.data.records;
                     for (var i = 0; i < data.length; i++) {
                         var id = data[i].id;
                         var value = data[i].terraceName;

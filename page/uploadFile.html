@@ -30,7 +30,7 @@
 
 			<div class="layui-form-item">
 			    <label class="layui-form-label">请选择</label>
-			    <div class="layui-input-inline">
+			    <div class="layui-input-inline" style="width: 300px;">
 			        <select id="project" name="projectId" lay-search lay-verify="required" name="project">
 			            <option value="">请选择项目</option>
 			        </select>
@@ -171,7 +171,7 @@
 						success: function(res) {
 							//方法中传入的参数data为后台获取的数据
 							var role = document.getElementById("project");
-							var data = res.data;
+							var data = res.data.records;
 							for (var i = 0; i < data.length; i++) {
 								var id = data[i].id;
 								var value = data[i].projectName;

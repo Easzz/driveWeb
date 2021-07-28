@@ -19,6 +19,9 @@
         .layui-table-cell {
             height: auto;
         }
+		a{
+			color: #01AAED;
+		}
 	</style>
 	<script>
 		//获取url中的参数
@@ -61,6 +64,10 @@
 
 		var table = layui.table;
 
+		function proofPicture(d) {
+				return '<a class="layui-blue" href="detail.html?projectId='+d.id+'">'+d.projectName+'</a>'
+		}
+
 		table.render({
 			elem: '#currentTableId',
 			url: apiUrl+'/project/getProjectList',
@@ -82,12 +89,12 @@
 			cols: [[
 				// {type: "checkbox", width: 50},
 				{field: 'id',  title: 'ID'},
-				{field: 'projectName',  title: '项目名'},
+				{field: 'projectName',  title: '项目名', templet: proofPicture},
 				{field: 'gmtCreate',  title: '创建时间'}
 			]],
 			// limits: [10, 15, 20, 25, 50, 100],
 			// limit: 15,
-			page: false,
+			page: true,
 			skin: 'line'
 		});
 
