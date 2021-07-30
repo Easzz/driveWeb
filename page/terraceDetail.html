@@ -52,6 +52,11 @@
 <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
 
 </body>
+
+<script type="text/html" id="zizeng">
+	{{d.LAY_TABLE_INDEX+1}}
+</script>
+
 <script>
 
 
@@ -88,9 +93,10 @@
 			}],
 			cols: [[
 				// {type: "checkbox", width: 50},
-				{field: 'id',  title: 'ID'},
-				{field: 'projectName',  title: '项目名', templet: proofPicture},
-				{field: 'gmtCreate',  title: '创建时间'}
+				// {field: 'id',  title: 'ID'},
+				{field: 'zizeng', width: 80, title: '序号', templet: '#zizeng'},
+				{field: 'projectName',  title: '项目名', templet: proofPicture}
+				// {field: 'gmtCreate',  title: '创建时间'}
 			]],
 			// limits: [10, 15, 20, 25, 50, 100],
 			// limit: 15,
