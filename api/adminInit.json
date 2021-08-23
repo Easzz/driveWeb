@@ -1,11 +1,11 @@
 {
   "homeInfo": {
-    "title": "首页",
+    "title": "主页",
     "href": "terraceInfo.html"
   },
   "logoInfo": {
     "title": "驱动管理",
-    "image": "../images/logo.png",
+    "image": "../images/3.png",
     "href": ""
   },
   "menuInfo": [
@@ -22,7 +22,7 @@
           "target": "_self",
           "child": [
             {
-              "title": "首页",
+              "title": "主页",
               "href": "terraceInfo.html",
               "icon": "fa fa-tachometer",
               "target": "_self"

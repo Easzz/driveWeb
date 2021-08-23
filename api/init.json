@@ -1,11 +1,11 @@
 {
   "homeInfo": {
-    "title": "首页",
+    "title": "主页",
     "href": "page/welcome-1.html?t=1"
   },
   "logoInfo": {
     "title": "LAYUI MINI",
-    "image": "images/logo.png",
+    "image": "images/3.png",
     "href": ""
   },
   "menuInfo": [

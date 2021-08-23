@@ -1,211 +1,214 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8">
-	<title></title>
+    <meta charset="utf-8">
+    <title></title>
 
 
-	<link rel="stylesheet" href="../lib/layui-v2.6.3/css/layui.css" media="all">
+    <link rel="stylesheet" href="../lib/layui-v2.6.3/css/layui.css" media="all">
 
-	<script src="../lib/layui-v2.6.3/layui.js"></script>
-	<script src="../js/jquery-3.5.1.min.js"></script>
-	<script src="../js/common.js"></script>
+    <script src="../lib/layui-v2.6.3/layui.js"></script>
+    <script src="../js/jquery-3.5.1.min.js"></script>
+    <script src="../js/common.js"></script>
 
-	<style>
+    <style>
         .layui-table-cell {
             height: inherit;
         }
-
+        
         .layui-table-cell {
             height: auto;
         }
-	</style>
-	<script>
-		//获取url中的参数
-		// function getUrlParam(name) {
-		// 	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
-		// 	var r = window.location.search.substr(1).match(reg); //匹配目标参数
-		// 	if (r != null) return unescape(r[2]);
-		// 	return null; //返回参数值
-		// }
+        /* .layui-table-box {
+            font-size: 16px;
+        } */
+    </style>
+    <script>
+        //获取url中的参数
+        // function getUrlParam(name) {
+        // 	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        // 	var r = window.location.search.substr(1).match(reg); //匹配目标参数
+        // 	if (r != null) return unescape(r[2]);
+        // 	return null; //返回参数值
+        // }
 
-		function getUrlParam(name) {
-			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-			var r = window.location.search.substr(1).match(reg);
-			if (r != null) return decodeURI(r[2]);
-			return null;
-		}
-	</script>
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return decodeURI(r[2]);
+            return null;
+        }
+    </script>
 
-	<script type="text/html" id="win7Tp">
-		<a href="{{d.win7SubList[0].url}}" class="layui-table-link">{{d.win7SubList[0].version}}</a>
-		</br>
-		{{d.win7SubList[0].driveDate}}
-	</script>
-	<script type="text/html" id="win10Tp">
-		<a href="{{d.win10SubList[0].url}}" class="layui-table-link">{{d.win10SubList[0].version}}</a>
-		</br>
-		{{d.win10SubList[0].driveDate}}
-	</script>
+    <script type="text/html" id="win7Tp">
+        <a href="{{d.win7SubList[0].url}}" class="layui-table-link">{{d.win7SubList[0].version}}</a>
+        </br>
+        {{d.win7SubList[0].driveDate}}
+    </script>
+    <script type="text/html" id="win10Tp">
+        <a href="{{d.win10SubList[0].url}}" class="layui-table-link">{{d.win10SubList[0].version}}</a>
+        </br>
+        {{d.win10SubList[0].driveDate}}
+    </script>
 </head>
+
 <body>
-<br>
+    <br>
 
-<blockquote class="layui-elem-quote layui-text">
-	<div style="font-size: 15px;">平台：<label id="terraceName">12312</label><br/></div>
-	项目：<label id="projectName">12312</label>
-</blockquote>
-<!--<label>平台：12312</label>-->
-<!--<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">-->
-<!--	<legend id="projectName">方框风格的表单集合</legend>-->
-<!--</fieldset>-->
+    <blockquote class="layui-elem-quote layui-text" style="font-size:15px;">
+        <div>平台：<label id="terraceName">12312</label><br/></div>
+        项目：<label id="projectName">12312</label>
+    </blockquote>
+    <!--<label>平台：12312</label>-->
+    <!--<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">-->
+    <!--	<legend id="projectName">方框风格的表单集合</legend>-->
+    <!--</fieldset>-->
 
-<table id="demo" lay-filter="test"></table>
+    <table id="demo" lay-filter="test"></table>
 
 </body>
 <script>
+    layui.use('table', function() {
+        var projectId = getUrlParam("projectId");
+        $.ajax({
+            url: apiUrl + '/project/info',
+            type: 'get',
+            dataType: 'json',
+            data: {
+                "projectId": projectId
+            },
+            // data: data,
+            success: function(res) {
+                console.log(res)
+                if (res.code == 1) {
+                    layer.msg(res.msg);
+                    return false;
+                }
+                if (res.code == 0) {
+
+                    var html = '<a class="layui-blue" href="terraceDetail.html?terraceId=' + res.data.terraceId + '&terraceName=' + res.data.terraceName + '">' + res.data.terraceName + '</a>';
+
+                    $("#projectName").text(res.data.projectName);
+                    // $("#terraceName").text(res.data.terraceName);
+                    $("#terraceName").html(html);
+
+                    return false;
+                }
+            }
+        })
 
 
-	layui.use('table', function () {
-		var projectId=getUrlParam("projectId");
-		$.ajax({
-			url: apiUrl+'/project/info',
-			type: 'get',
-			dataType: 'json',
-			 data: {"projectId":projectId},
-			// data: data,
-			success: function(res) {
-				console.log(res)
-				if(res.code==1){
-					layer.msg(res.msg);
-					return false;
-				}
-				if(res.code==0){
+        // var msg =decodeURI(getUrlParam('projectName'))
+        // $("#projectName").text(projectName);
 
-					var html='<a class="layui-blue" href="terraceDetail.html?terraceId='+res.data.terraceId+'&terraceName='+res.data.terraceName+'">'+res.data.terraceName+'</a>';
+        var table = layui.table;
 
-					$("#projectName").text(res.data.projectName);
-					// $("#terraceName").text(res.data.terraceName);
-					$("#terraceName").html(html);
+        //第一个实例
+        table.render({
+            elem: '#demo',
+            height: 700,
+            url: apiUrl + '/project/getListByProjectId?projectId=' + getUrlParam("projectId"), //数据接口
+            page: false //开启分页
+                ,
+            cols: [
+                [ //表头
+                    // {field: 'id', title: 'ID', width:80, sort: true, fixed: 'left'}
+                    {
+                        field: 'driveName',
+                        title: '驱动名',
+                        width: '15%'
+                    }, {
+                        field: 'manufacturer',
+                        title: '芯片名',
+                        width: '15%'
+                    },
+                    // {
+                    // 	field: 'terraceName',
+                    // 	title: '平台名',
+                    // 	width: '6%'
+                    // },
+                    {
+                        field: 'win7SubList',
+                        title: 'win10',
+                        width: '25%',
+                        templet: function(d) {
+                            if (d.win10SubList != null) {
 
-					return false;
-				}
-			}
-		})
+                                if (!d.win10SubList[0].url == '') {
+                                    return '版本：<a class="layui-table-link" href="' + fileServerUrl + d.win10SubList[0]
+                                        .url + '">' + d.win10SubList[0].version + '</a> </br>日期：' + d
+                                        .win10SubList[0].driveDate + '';
+                                }
+                            } else {
+                                return '-';
+                            }
 
+                        }
+                    }, {
+                        field: 'win7SubList',
+                        title: 'win7',
+                        width: '25%',
+                        // templet: '#win7Tp'
+                        templet: function(d) {
+                            if (d.win7SubList != null) {
 
-		// var msg =decodeURI(getUrlParam('projectName'))
-		// $("#projectName").text(projectName);
+                                if (!d.win7SubList[0].url == '') {
+                                    return '版本：<a class="layui-table-link" href="' + fileServerUrl + d.win7SubList[0]
+                                        .url + '">' + d.win7SubList[0].version + '</a> </br>日期：' + d
+                                        .win7SubList[0].driveDate + '';
 
-		var table = layui.table;
+                                }
+                            } else {
+                                return '-';
+                            }
 
-		//第一个实例
-		table.render({
-			elem: '#demo',
-			height: 700,
-			url: apiUrl + '/project/getListByProjectId?projectId=' + getUrlParam("projectId"), //数据接口
-			page: false //开启分页
-			,
-			cols: [
-				[ //表头
-					// {field: 'id', title: 'ID', width:80, sort: true, fixed: 'left'}
-					{
-						field: 'driveName',
-						title: '驱动名',
-						width: '15%'
-					},
-					{
-						field: 'manufacturer',
-						title: '芯片名',
-						width: '15%'
-					},
-					// {
-					// 	field: 'terraceName',
-					// 	title: '平台名',
-					// 	width: '6%'
-					// },
-					{
-						field: 'win7SubList',
-						title: 'win10',
-						width: '25%',
-						templet: function (d) {
-							if (d.win10SubList != null) {
-
-								if (!d.win10SubList[0].url == '') {
-									return '版本：<a class="layui-table-link" href="' + fileServerUrl + d.win10SubList[0]
-										.url + '">' + d.win10SubList[0].version + '</a> </br>日期：' + d
-										.win10SubList[0].driveDate + '';
-								}
-							} else {
-								return '-';
-							}
-
-						}
-					},
-									{
-						field: 'win7SubList',
-						title: 'win7',
-						width: '25%',
-						// templet: '#win7Tp'
-						templet: function (d) {
-							if (d.win7SubList != null) {
-
-								if (!d.win7SubList[0].url == '') {
-									return '版本：<a class="layui-table-link" href="' + fileServerUrl + d.win7SubList[0]
-										.url + '">' + d.win7SubList[0].version + '</a> </br>日期：' + d
-										.win7SubList[0].driveDate + '';
-
-								}
-							} else {
-								return '-';
-							}
-
-						}
-					},
-					{
-						field: 'description',
-						title: '说明',
-						width: '20%'
-					},
+                        }
+                    }, {
+                        field: 'description',
+                        title: '说明',
+                        width: '20%'
+                    },
 
 
-				]
-			],
-			done: function (res, curr, count) {
-				merge(res);
-			}
-		});
+                ]
+            ],
+            done: function(res, curr, count) {
+                merge(res);
+            }
+        });
 
-	});
+    });
 
-	function merge(res) {
-		var data = res.data;
-		var mergeIndex = 0;//定位需要添加合并属性的行数
-		var mark = 1; //这里涉及到简单的运算，mark是计算每次需要合并的格子数
-		var columsName = ['driveName'];//需要合并的列名称
-		var columsIndex = [0];//需要合并的列索引值
-		for (var k = 0; k < columsName.length; k++) { //这里循环所有要合并的列
-			var trArr = $(".layui-table-body>.layui-table").find("tr");//所有行
-			for (var i = 1; i < res.data.length; i++) { //这里循环表格当前的数据
-				var tdCurArr = trArr.eq(i).find("td").eq(columsIndex[k]);//获取当前行的当前列
-				var tdPreArr = trArr.eq(mergeIndex).find("td").eq(columsIndex[k]);//获取相同列的第一列
+    function merge(res) {
+        var data = res.data;
+        var mergeIndex = 0; //定位需要添加合并属性的行数
+        var mark = 1; //这里涉及到简单的运算，mark是计算每次需要合并的格子数
+        var columsName = ['driveName']; //需要合并的列名称
+        var columsIndex = [0]; //需要合并的列索引值
+        for (var k = 0; k < columsName.length; k++) { //这里循环所有要合并的列
+            var trArr = $(".layui-table-body>.layui-table").find("tr"); //所有行
+            for (var i = 1; i < res.data.length; i++) { //这里循环表格当前的数据
+                var tdCurArr = trArr.eq(i).find("td").eq(columsIndex[k]); //获取当前行的当前列
+                var tdPreArr = trArr.eq(mergeIndex).find("td").eq(columsIndex[k]); //获取相同列的第一列
 
-				if (data[i][columsName[k]] === data[i-1][columsName[k]]) { //后一行的值与前一行的值做比较，相同就需要合并
-					mark += 1;
-					tdPreArr.each(function () {//相同列的第一列增加rowspan属性
-						$(this).attr("rowspan", mark);
-					});
-					tdCurArr.each(function () {//当前行隐藏
-						$(this).css("display", "none");
-					});
-				}else {
-					mergeIndex = i;
-					mark = 1;//一旦前后两行的值不一样了，那么需要合并的格子数mark就需要重新计算
-				}
-			}
-			mergeIndex = 0;
-			mark = 1;
-		}
-	}
+                if (data[i][columsName[k]] === data[i - 1][columsName[k]]) { //后一行的值与前一行的值做比较，相同就需要合并
+                    mark += 1;
+                    tdPreArr.each(function() { //相同列的第一列增加rowspan属性
+                        $(this).attr("rowspan", mark);
+                    });
+                    tdCurArr.each(function() { //当前行隐藏
+                        $(this).css("display", "none");
+                    });
+                } else {
+                    mergeIndex = i;
+                    mark = 1; //一旦前后两行的值不一样了，那么需要合并的格子数mark就需要重新计算
+                }
+            }
+            mergeIndex = 0;
+            mark = 1;
+        }
+    }
 </script>
+
 </html>
