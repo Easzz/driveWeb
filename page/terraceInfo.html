@@ -67,15 +67,43 @@
 		body {
 			background-color: #fff;
 		}
+
+		.box1 {
+			width: 0;
+			height: 0;
+			border-top: 16px solid white;
+			border-bottom: 16px solid white;
+			border-right: 16px solid #00aeef;
+			display: block;
+			position: absolute;
+			left: 0;
+		}
+
+		.box2 {
+			cursor: pointer;
+			display: inline-block;
+			color: white;
+			font-size: 16px;
+			background-color: #00aeef;
+			word-wrap: break-word;
+			height: 32px;
+			line-height: 32px;
+			text-align: center;
+			padding: 0 7px 0 20px;
+			position: relative;
+			/* top: -3px; */
+		}
 	</style>
 </head>
 
 <body>
 <div class="layuimini-container">
 	<div class="layuimini-main">
-		<div class="box">
+		<div id="boxContent" class="box">
+
+			<span style="font-weight: 200;font-size: 20px;" id="chooseName">选择平台</span>
 			<div class="box-h">
-				<span style="font-weight: 200;font-size: 20px;" id="chooseName">选择平台</span>
+
 			</div>
 			<div style="margin-top: 20px;"></div>
 			<div class="box-bd  clearfix">
@@ -97,12 +125,12 @@
 
 		init();
 
-		$("#chooseName").click(function () {
-			init();
-		})
+
 	})
 
 	function init() {
+		$("#contentDiv").find("li").remove();
+		$("#back").remove();
 		$.ajax({
 			url: apiUrl + '/terrace/getTerraceAndProject',
 			type: 'get',
@@ -113,7 +141,10 @@
 					var terraceHtml = '';
 					var terrace = res.data[i];
 					terraceHtml += ' <li>' +
-						'<a href="#" onclick="clickTerrace(' + terrace.id + ')" data-id="' + terrace.id + '">' + terrace.terraceName + '</a></li>';
+						// '<a href="#" onclick=\"clickTerrace('" + parameter1 + "','" + parameter2 + "','" + parameter3 + "','" + parameter4 + "')\" data-id="' + terrace.id + '">' + terrace.terraceName + '</a></li>';
+						// '<a href="#" onclick="clickTerrace('+terrace.id+')" data-name="' + terrace.terraceName + '">' + terrace.terraceName + '</a></li>';
+
+					'<a href="#" onclick="clickTerrace(\'' + terrace.id + '\',\'' + terrace.terraceName + '\')"> '  + terrace.terraceName + '</a></li> ';
 
 					$("#contentDiv").append(terraceHtml)
 				}
@@ -122,10 +153,18 @@
 		})
 
 		$("#chooseName").text("请选择平台");
+
+
 	}
 
-	function clickTerrace(terraceId) {
+	function clickTerrace(terraceId,terraceName) {
+		let attr = $(this).attr("name");
+
 		console.log(terraceId);
+		console.log(attr);
+		console.log(terraceName);
+
+
 		$.ajax({
 			url: apiUrl + '/project/getProjectList',
 			type: 'get',
@@ -137,7 +176,17 @@
 				//方法中传入的参数data为后台获取的数据
 				console.log(res)
 				$("#contentDiv").find("li").remove();
-				$("#chooseName").text("返回");
+
+				$("#chooseName").text(terraceName);
+
+				var html='<div  id="back" class="box2">\n' +
+					'<div class="box1"></div>' +
+					'返回' +
+					'</div>';
+				$("#boxContent").prepend(html)
+				$("#back").click(function () {
+					init();
+				})
 
 				var projectHtml = '';
 				for (i = 0; i < res.data.records.length; i++) {
