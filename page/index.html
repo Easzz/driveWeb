@@ -39,6 +39,22 @@
             font-size: 14px;
             letter-spacing: 1px;
         }
+
+        /*.layui-nav-child {*/
+        /*    display: none;*/
+        /*    position: absolute;*/
+        /*    left: -40px;*/
+        /*    top: 65px;*/
+        /*    min-width: 100%;*/
+        /*    line-height: 26px;*/
+        /*    padding: 5px 0;*/
+        /*    box-shadow: 0 2px 4px rgb(0 0 0 / 12%);*/
+        /*    border: 1px solid #d2d2d2;*/
+        /*    background-color: #fff;*/
+        /*    z-index: 100;*/
+        /*    border-radius: 2px;*/
+        /*    white-space: nowrap;*/
+        /*}*/
     </style>
 </head>
 <body class="layui-layout-body layuimini-all">
@@ -78,7 +94,7 @@
                 </li>
                 <li class="layui-nav-item layuimini-setting">
                     <a href="javascript:;">exit</a>
-                    <dl class="layui-nav-child">
+                    <dl class="layui-nav-child" style="left: -40px;line-height:26px">
 <!--                        <dd>-->
 <!--                            <a href="javascript:;" layuimini-content-href="page/user-setting.html" data-title="基本资料" data-icon="fa fa-gears">基本资料<span class="layui-badge-dot"></span></a>-->
 <!--                        </dd>-->
@@ -88,7 +104,7 @@
 <!--                        <dd>-->
 <!--                            <hr>-->
 <!--                        </dd>-->
-                        <dd>
+                        <dd style=" margin-top: -8px;">
                             <a href="javascript:;" class="login-out">退出登录</a>
                         </dd>
                     </dl>
