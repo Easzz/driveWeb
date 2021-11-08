@@ -1,65 +1,60 @@
 {
-  "homeInfo": {
-    "title": "主页",
-    "href": "terraceInfo.html"
-  },
-  "logoInfo": {
-    "title": "驱动管理",
-    "image": "../images/3.png",
-    "href": ""
-  },
-  "menuInfo": [
-    {
-      "title": "驱动信息",
-      "icon": "fa fa-address-book",
-      "href": "",
-      "target": "_self",
-      "child": [
-        {
-          "title": "功能菜单",
-          "href": "",
-          "icon": "fa fa-home",
-          "target": "_self",
-          "child": [
-            {
-              "title": "主页",
-              "href": "terraceInfo.html",
-              "icon": "fa fa-tachometer",
-              "target": "_self"
-            },
-            {
-              "title": "平台搜索",
-              "href": "terraceSearch.html",
-              "icon": "fa fa-tachometer",
-              "target": "_self"
-            },
-            {
-              "title": "项目搜索",
-              "href": "search.html",
-              "icon": "fa fa-tachometer",
-              "target": "_self"
-            },
-            {
-              "title": "添加平台",
-              "href": "terraceList.html",
-              "icon": "fa fa-tachometer",
-              "target": "_self"
-            },
-            {
-              "title": "添加项目",
-              "href": "projectList.html",
-              "icon": "fa fa-tachometer",
-              "target": "_self"
-            },
-            {
-              "title": "添加驱动",
-              "href": "uploadFile.html",
-              "icon": "fa fa-tachometer",
-              "target": "_self"
-            }
-          ]
-        }
-      ]
-    }
-  ]
+    "homeInfo": {
+        "title": "主页",
+        "href": "terraceInfo.html"
+    },
+    "logoInfo": {
+        "title": "驱动管理",
+        "image": "../images/3.png",
+        "href": ""
+    },
+    "menuInfo": [{
+        "title": "驱动信息",
+        "icon": "fa fa-address-book",
+        "href": "",
+        "target": "_self",
+        "child": [{
+            "title": "功能菜单",
+            "href": "",
+            "icon": "fa fa-home",
+            "target": "_self",
+            "child": [{
+                    "title": "主页",
+                    "href": "terraceInfo.html",
+                    "icon": "",
+                    "target": "_self"
+                },
+                {
+                    "title": "平台搜索",
+                    "href": "terraceSearch.html",
+                    "icon": "",
+                    "target": "_self"
+                },
+                {
+                    "title": "项目搜索",
+                    "href": "search.html",
+                    "icon": "",
+                    "target": "_self"
+                },
+                {
+                    "title": "添加平台",
+                    "href": "terraceList.html",
+                    "icon": "",
+                    "target": "_self"
+                },
+                {
+                    "title": "添加项目",
+                    "href": "projectList.html",
+                    "icon": "",
+                    "target": "_self"
+                },
+                {
+                    "title": "添加驱动",
+                    "href": "uploadFile.html",
+                    "icon": "",
+                    "target": "_self"
+                }
+            ]
+        }]
+    }]
 }
