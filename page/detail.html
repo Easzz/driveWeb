@@ -16,13 +16,21 @@
         .layui-table-cell {
             height: inherit;
         }
-
+        
         .layui-table-cell {
             height: auto;
         }
-        /* .layui-table-box {
+        
+        .layui-table-box {
             font-size: 16px;
-        } */
+        }
+        .layui-text{
+line-height:1.9;
+}
+        .layui-table td,
+        .layui-table th {
+            font-size: 16px;
+        }
     </style>
     <script>
         //获取url中的参数
@@ -51,12 +59,17 @@
         </br>
         {{d.win10SubList[0].driveDate}}
     </script>
+    <script type="text/html" id="win11Tp">
+        <a href="{{d.win11SubList[0].url}}" class="layui-table-link">{{d.win11SubList[0].version}}</a>
+        </br>
+        {{d.win11SubList[0].driveDate}}
+    </script>
 </head>
 
 <body>
     <br>
 
-    <blockquote class="layui-elem-quote layui-text" style="font-size:15px;">
+    <blockquote class="layui-elem-quote layui-text" style="font-size:16px;">
         <div>平台：<label id="terraceName">12312</label><br/></div>
         项目：<label id="projectName">12312</label>
     </blockquote>
@@ -117,21 +130,38 @@
                     {
                         field: 'driveName',
                         title: '驱动名',
-                        width: '15%'
+                        width: '13%'
                     }, {
                         field: 'manufacturer',
                         title: '芯片名',
                         width: '15%'
-                    },
+                    },              
                     // {
                     // 	field: 'terraceName',
                     // 	title: '平台名',
                     // 	width: '6%'
                     // },
                     {
-                        field: 'win7SubList',
+                        field: 'win11SubList',
+                        title: 'win11',
+                        width: '18%',
+                        templet: function(d) {
+                            if (d.win11SubList != null) {
+
+                                if (!d.win11SubList[0].url == '') {
+                                    return '版本：<a class="layui-table-link" href="' + fileServerUrl + d.win11SubList[0]
+                                            .url + '">' + d.win11SubList[0].version + '</a> </br>日期：' + d
+                                            .win11SubList[0].driveDate + '';
+                                }
+                            } else {
+                                return '-';
+                            }
+                        }
+                    },
+                    {
+                        field: 'win10SubList',
                         title: 'win10',
-                        width: '25%',
+                        width: '18%',
                         templet: function(d) {
                             if (d.win10SubList != null) {
 
@@ -143,12 +173,11 @@
                             } else {
                                 return '-';
                             }
-
                         }
                     }, {
                         field: 'win7SubList',
                         title: 'win7',
-                        width: '25%',
+                        width: '18%',
                         // templet: '#win7Tp'
                         templet: function(d) {
                             if (d.win7SubList != null) {
@@ -157,20 +186,16 @@
                                     return '版本：<a class="layui-table-link" href="' + fileServerUrl + d.win7SubList[0]
                                         .url + '">' + d.win7SubList[0].version + '</a> </br>日期：' + d
                                         .win7SubList[0].driveDate + '';
-
                                 }
                             } else {
                                 return '-';
                             }
-
                         }
                     }, {
                         field: 'description',
                         title: '说明',
-                        width: '20%'
+                        width: '18%'
                     },
-
-
                 ]
             ],
             done: function(res, curr, count) {

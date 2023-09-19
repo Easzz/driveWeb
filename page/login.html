@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>驱动管理系统-登陆</title>
@@ -10,181 +11,688 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
     <link rel="stylesheet" href="../lib/layui-v2.6.3/css/layui.css" media="all">
+
     <!--[if lt IE 9]>
     <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
     <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style>
-        .main-body {top:50%;left:50%;position:absolute;-webkit-transform:translate(-50%,-50%);-moz-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);transform:translate(-50%,-50%);overflow:hidden;}
-        .login-main .login-bottom .center .item input {display:inline-block;width:227px;height:22px;padding:0;position:absolute;border:0;outline:0;font-size:14px;letter-spacing:0;}
-        .login-main .login-bottom .center .item .icon-1 {background:url(../images/icon-login.png) no-repeat 1px 0;}
-        .login-main .login-bottom .center .item .icon-2 {background:url(../images/icon-login.png) no-repeat -54px 0;}
-        .login-main .login-bottom .center .item .icon-3 {background:url(../images/icon-login.png) no-repeat -106px 0;}
-        .login-main .login-bottom .center .item .icon-4 {background:url(../images/icon-login.png) no-repeat 0 -43px;position:absolute;right:-10px;cursor:pointer;}
-        .login-main .login-bottom .center .item .icon-5 {background:url(../images/icon-login.png) no-repeat -55px -43px;}
-        .login-main .login-bottom .center .item .icon-6 {background:url(../images/icon-login.png) no-repeat 0 -93px;position:absolute;right:-10px;margin-top:8px;cursor:pointer;}
-        .login-main .login-bottom .tip .icon-nocheck {display:inline-block;width:10px;height:10px;border-radius:2px;border:solid 1px #9abcda;position:relative;top:2px;margin:1px 8px 1px 1px;cursor:pointer;}
-        .login-main .login-bottom .tip .icon-check {margin:0 7px 0 0;width:14px;height:14px;border:none;background:url(../images/icon-login.png) no-repeat -111px -48px;}
-        .login-main .login-bottom .center .item .icon {display:inline-block;width:33px;height:22px;}
-        .login-main .login-bottom .center .item {width:288px;height:35px;border-bottom:1px solid #dae1e6;margin-bottom:35px;}
-        .login-main {width:428px;position:relative;float:left;}
-        .login-main .login-top {height:117px;background-color:#148be4;border-radius:12px 12px 0 0;font-family:SourceHanSansCN-Regular;font-size:30px;font-weight:400;font-stretch:normal;letter-spacing:0;color:#fff;line-height:117px;text-align:center;overflow:hidden;-webkit-transform:rotate(0);-moz-transform:rotate(0);-ms-transform:rotate(0);-o-transform:rotate(0);transform:rotate(0);}
-        .login-main .login-top .bg1 {display:inline-block;width:74px;height:74px;background:#fff;opacity:.1;border-radius:0 74px 0 0;position:absolute;left:0;top:43px;}
-        .login-main .login-top .bg2 {display:inline-block;width:94px;height:94px;background:#fff;opacity:.1;border-radius:50%;position:absolute;right:-16px;top:-16px;}
-        .login-main .login-bottom {width:428px;background:#fff;border-radius:0 0 12px 12px;padding-bottom:53px;}
-        .login-main .login-bottom .center {width:288px;margin:0 auto;padding-top:40px;padding-bottom:15px;position:relative;}
-        .login-main .login-bottom .tip {clear:both;height:16px;line-height:16px;width:288px;margin:0 auto;}
-        body {background:url(../images/loginbg.png) 0% 0% / cover no-repeat;position:static;font-size:12px;}
-        input::-webkit-input-placeholder {color:#a6aebf;}
-        input::-moz-placeholder {/* Mozilla Firefox 19+ */            color:#a6aebf;}
-        input:-moz-placeholder {/* Mozilla Firefox 4 to 18 */            color:#a6aebf;}
-        input:-ms-input-placeholder {/* Internet Explorer 10-11 */            color:#a6aebf;}
-        input:-webkit-autofill {/* 取消Chrome记住密码的背景颜色 */            -webkit-box-shadow:0 0 0 1000px white inset !important;}
-        html {height:100%;}
-        .login-main .login-bottom .tip {clear:both;height:16px;line-height:16px;width:288px;margin:0 auto;}
-        .login-main .login-bottom .tip .login-tip {font-family:MicrosoftYaHei;font-size:12px;font-weight:400;font-stretch:normal;letter-spacing:0;color:#9abcda;cursor:pointer;}
-        .login-main .login-bottom .tip .forget-password {font-stretch:normal;letter-spacing:0;color:#1391ff;text-decoration:none;position:absolute;right:62px;}
-        .login-main .login-bottom .login-btn {width:288px;height:40px;background-color:#1E9FFF;border-radius:16px;margin:24px auto 0;text-align:center;line-height:40px;color:#fff;font-size:14px;letter-spacing:0;cursor:pointer;border:none;}
-        .login-main .login-bottom .center .item .validateImg {position:absolute;right:1px;cursor:pointer;height:36px;border:1px solid #e6e6e6;}
-        .footer {left:0;bottom:0;color:#fff;width:100%;position:absolute;text-align:center;line-height:30px;padding-bottom:10px;text-shadow:#000 0.1em 0.1em 0.1em;font-size:14px;}
-        .padding-5 {padding:5px !important;}
-        .footer a,.footer span {color:#fff;}
-        @media screen and (max-width:428px) {.login-main {width:360px !important;}
-            .login-main .login-top {width:360px !important;}
-            .login-main .login-bottom {width:360px !important;}
+        .main-body {
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            overflow: hidden;
+        }
+        
+        .login-main .login-bottom .center .item input {
+            display: inline-block;
+            width: 227px;
+            height: 23px;
+            padding: 0;
+            position: absolute;
+            border: 0;
+            outline: 0;
+            font-size: 14px;
+            color: white;
+            background-color: transparent;
+            letter-spacing: 0;
+        }
+        
+        .login-main .login-bottom .center .item .icon-1 {
+            background: url(../images/icon-login.png) no-repeat 1px 0;
+        }
+        
+        .login-main .login-bottom .center .item .icon-2 {
+            background: url(../images/icon-login.png) no-repeat -54px 0;
+        }
+        
+        .login-main .login-bottom .center .item .icon-3 {
+            background: url(../images/icon-login.png) no-repeat -106px 0;
+        }
+        
+        .login-main .login-bottom .center .item .icon-4 {
+            background: url(../images/icon-login.png) no-repeat 0 -43px;
+            position: absolute;
+            right: -10px;
+            cursor: pointer;
+        }
+        
+        .login-main .login-bottom .center .item .icon-5 {
+            background: url(../images/icon-login.png) no-repeat -55px -43px;
+        }
+        
+        .login-main .login-bottom .center .item .icon-6 {
+            background: url(../images/icon-login.png) no-repeat 0 -93px;
+            position: absolute;
+            right: -10px;
+            margin-top: 8px;
+            cursor: pointer;
+        }
+        
+        .login-main .login-bottom .tip .icon-nocheck {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+            border: solid 1px #9abcda;
+            position: relative;
+            top: 2px;
+            margin: 1px 8px 1px 1px;
+            cursor: pointer;
+        }
+        
+        .login-main .login-bottom .tip .icon-check {
+            margin: 0 7px 0 0;
+            width: 14px;
+            height: 14px;
+            border: none;
+            background: url(../images/icon-login.png) no-repeat -111px -48px;
+            /* background-color: teal; */
+        }
+        
+        .login-main .login-bottom .center .item .icon {
+            display: inline-block;
+            width: 33px;
+            height: 22px;
+        }
+        
+        .login-main .login-bottom .center .item {
+            width: 288px;
+            height: 35px;
+            border-bottom: 1px solid #dae1e6;
+            margin-bottom: 35px;
+        }
+        
+        .login-main {
+            width: 428px;
+            position: relative;
+            float: left;
+            background: transparent;
+            background-color: rgba(0, 0, 0, .2);
+            border: 0.4px solid white;
+            border-radius: 5%;
+        }
+        
+        .login-main .login-top {
+            height: 117px;
+            /* background-color: #148be4; */
+            /* border-radius: 12px 12px 0 0; */
+            font-family: SourceHanSansCN-Regular;
+            font-size: 30px;
+            font-weight: 400;
+            font-stretch: normal;
+            letter-spacing: 0;
+            color: #fff;
+            line-height: 117px;
+            text-align: center;
+            overflow: hidden;
+            /* color: white; */
+            -webkit-transform: rotate(0);
+            -moz-transform: rotate(0);
+            -ms-transform: rotate(0);
+            -o-transform: rotate(0);
+            transform: rotate(0);
+        }
+        
+        .login-main .login-top .bg1 {
+            display: inline-block;
+            width: 74px;
+            height: 74px;
+            background: #fff;
+            opacity: .1;
+            border-radius: 0 74px 0 0;
+            position: absolute;
+            left: 0;
+            top: 43px;
+        }
+        
+        .login-main .login-top .bg2 {
+            display: inline-block;
+            width: 94px;
+            height: 94px;
+            background: #fff;
+            opacity: .1;
+            border-radius: 50%;
+            position: absolute;
+            right: -16px;
+            top: -16px;
+        }
+        
+        .login-main .login-bottom {
+            width: 428px;
+            /* background: #fff; */
+            /* border-radius: 0 0 12px 12px; */
+            padding-bottom: 53px;
+        }
+        
+        .login-main .login-bottom .center {
+            width: 288px;
+            background-color: transparent;
+            margin: 0 auto;
+            padding-top: 37px;
+            padding-bottom: 15px;
+            position: relative;
+        }
+        
+        .login-main .login-bottom .tip {
+            clear: both;
+            height: 16px;
+            line-height: 16px;
+            width: 288px;
+            margin: 0 auto;
+        }
+        
+        .xiaoacao_footer {
+            height: 35px;
+            line-height: 35px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            background-color: transparent;
+            color: white;
+            font-family: Arial;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        
+        body {
+            background: url(../images/a.jpg) 0% 0% / cover no-repeat;
+            /* background-color: rgba(0, 0, 0, .6); */
+            /* background-color: rgb(88, 86, 88); */
+            /* position: static; */
+            font-size: 16px;
+            display: flex;
+            background-position: 50%;
+            /* float: right; */
+        }
+        
+        input::-webkit-input-placeholder {
+            color: #000;
+        }
+        
+        input::-moz-placeholder {
+            /* Mozilla Firefox 19+ */
+            color: #000;
+        }
+        
+        input:-moz-placeholder {
+            /* Mozilla Firefox 4 to 18 */
+            color: #000;
+        }
+        
+        input:-ms-input-placeholder {
+            /* Internet Explorer 10-11 */
+            color: #000;
+        }
+        /* input:-webkit-autofill { */
+        /* 取消Chrome记住密码的背景颜色 */
+        /* -webkit-box-shadow: 0 0 0 1000px white inset !important;
+        } */
+        
+        html {
+            height: 100%;
+        }
+        
+        .login-main .login-bottom .tip {
+            clear: both;
+            height: 16px;
+            line-height: 16px;
+            width: 288px;
+            margin: 0 auto;
+        }
+        
+        .login-main .login-bottom .tip .login-tip {
+            font-family: MicrosoftYaHei;
+            font-size: 12px;
+            font-weight: 400;
+            font-stretch: normal;
+            letter-spacing: 0;
+            color: #9abcda;
+            cursor: pointer;
+        }
+        
+        .login-main .login-bottom .tip .forget-password {
+            font-stretch: normal;
+            letter-spacing: 0;
+            color: #1391ff;
+            text-decoration: none;
+            position: absolute;
+            right: 62px;
+        }
+        
+        .login-main .login-bottom .login-btn {
+            width: 100px;
+            height: 40px;
+            /* background-color: #1E9FFF; */
+            border-radius: 16px;
+            margin: 24px auto 0;
+            text-align: center;
+            line-height: 40px;
+            color: #fff;
+            font-size: 15px;
+            letter-spacing: 0;
+            cursor: pointer;
+            border: none;
+            letter-spacing: 2px;
+            background-color: transparent;
+            transition: all 0.5s;
+            overflow: hidden;
+        }
+        
+        .login-main .login-bottom .login-btn:hover {
+            /* color: #03e9f4; */
+            border-radius: 5px;
+            background-color: #03e9f4;
+            box-shadow: 0 0 5px #03e9f4, 0 0 15px #03e9f4, 0 0 30px #03e9f4, 0 0 45px #03e9f4;
+        }
+        
+        .login-main .login-bottom .login-btn a {
+            position: relative;
+            padding: 10px 10px;
+        }
+        
+        .login-main .login-bottom .login-btn a span {
+            position: absolute;
+            display: block;
+        }
+        
+        .login-bottom a span:nth-child(1) {
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #03e9f4);
+            animation: btn-anim1 1s linear infinite;
+        }
+        
+        .login-bottom a span:nth-child(2) {
+            right: 0;
+            top: -100%;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, transparent, #03e9f4);
+            animation: btn-anim2 1s linear infinite;
+            animation-delay: .25s
+        }
+        
+        .login-bottom a span:nth-child(3) {
+            right: -100%;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(270deg, transparent, #03e9f4);
+            animation: btn-anim3 1s linear infinite;
+            animation-delay: .5s
+        }
+        
+        .login-bottom a span:nth-child(4) {
+            left: 0;
+            bottom: -100%;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(360deg, transparent, #03e9f4);
+            animation: btn-anim4 1s linear infinite;
+            animation-delay: .75s
+        }
+        
+        @keyframes btn-anim1 {
+            0% {
+                left: -100%;
+            }
+            50%,
+            100% {
+                left: 100%;
+            }
+        }
+        
+        @keyframes btn-anim2 {
+            0% {
+                top: -100%;
+            }
+            50%,
+            100% {
+                top: 100%;
+            }
+        }
+        
+        @keyframes btn-anim3 {
+            0% {
+                right: -100%;
+            }
+            50%,
+            100% {
+                right: 100%;
+            }
+        }
+        
+        @keyframes btn-anim4 {
+            0% {
+                bottom: -100%;
+            }
+            50%,
+            100% {
+                bottom: 100%;
+            }
+        }
+        
+        .center .item .validateImg {
+            position: absolute;
+            right: 1px;
+            cursor: pointer;
+            height: 36px;
+            border: 1px solid #e6e6e6;
+        }
+        
+        .footer {
+            left: 0;
+            bottom: 0;
+            color: #fff;
+            width: 100%;
+            position: absolute;
+            text-align: center;
+            line-height: 30px;
+            padding-bottom: 10px;
+            text-shadow: #000 0.1em 0.1em 0.1em;
+            font-size: 14px;
+        }
+        
+        .padding-5 {
+            padding: 5px !important;
+        }
+        
+        .footer a,
+        .footer span {
+            color: #fff;
+            /* color: rgba(255.255.255.0.6); */
+        }
+        
+        @media screen and (max-width:428px) {
+            .login-main {
+                width: 360px !important;
+            }
+            .login-main .login-top {
+                width: 360px !important;
+            }
+            .login-main .login-bottom {
+                width: 360px !important;
+            }
+        }
+        
+        input::-webkit-input-placeholder {
+            /* WebKit browsers */
+            color: white;
+        }
+        
+        input:-moz-placeholder {
+            /* Mozilla Firefox 4 to 18 */
+            color: white;
+        }
+        
+        input::-moz-placeholder {
+            /* Mozilla Firefox 19+ */
+            color: white;
+        }
+        
+        input:-ms-input-placeholder {
+            /* Internet Explorer 10+ */
+            color: white;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* body {
+            background-color: rgb(139, 225, 236);
+        } */
+        
+        .drop1 {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            width: 200px;
+            margin: 100px;
+            /* background-color: rgb(208, 211, 210); */
+            animation: move 4s linear alternate-reverse infinite;
+        }
+        
+        .drop {
+            position: absolute;
+            width: 110px;
+            height: 110px;
+            background-color: transparent;
+            border-radius: 51% 49% 49% 51% / 55% 56% 44% 45%;
+            box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.05), 8px 9px 5px rgba(0, 0, 0, 0.1), 10px 9px 5px rgba(0, 0, 0, 0.05), -8px -9px 9px rgba(255, 255, 255, 0.09);
+            animation: r 5s linear infinite;
+        }
+        /* .drop:nth-child(2) {
+            width: 95px;
+            height: 95px;
+        } */
+        
+        .drop:nth-child(2) {
+            width: 90px;
+            height: 90px;
+        }
+        
+        .drop:nth-child(3) {
+            width: 100px;
+            height: 100px;
+        }
+        
+        .drop:nth-child(1) {
+            left: 30px;
+            top: 100px;
+            /* animation: m1 10s linear alternate-reverse infinite; */
+        }
+        /* .drop:nth-child(2) {
+            left: 500px;
+            top: 50px;
+        } */
+        
+        .drop:nth-child(2) {
+            left: 900px;
+            top: 90px;
+            /* z-index: 100; */
+        }
+        
+        .drop:nth-child(3) {
+            left: 1200px;
+            top: 150px;
+        }
+        
+        .drop::after {
+            content: "";
+            position: absolute;
+            top: 20px;
+            left: 22px;
+            width: 6px;
+            height: 6px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 65% 35% 82% 18% / 45% 85% 15% 55%;
+        }
+        
+        .drop::before {
+            content: "";
+            position: absolute;
+            top: 20px;
+            left: 35px;
+            width: 8px;
+            height: 8px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 23% 77% 35% 65% / 79% 44% 56% 21%;
+        }
+        
+        @keyframes move {
+            0% {
+                transform: translateY(50%);
+            }
+            100% {
+                transform: translateY(-10%);
+            }
+        }
+        
+        @keyframes r {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
+
 <body>
-	<ul class="layui-nav layui-layout-right">
-		 
-		        <li class="layui-nav-item">
-                    <a href="http://test.jwele.com" target="_blank">部门首页</a><i class="fa fa-refresh"></i>
-                </li>
-				
-				<li class="layui-nav-item" lay-unselect>
-                    <a href="http://bbs.test.jwele.com" target="_blank">测试技术论坛</a><i class="fa fa-refresh"></i>
-                </li>
-				
-				<li class="layui-nav-item" lay-unselect>
-                    <a href="http://driver.test.jwele.com" target="_blank">测试驱动下载</a><i class="fa fa-refresh"></i>
-                </li>
-				
-				<li class="layui-nav-item" lay-unselect>
-                    <a href="http://device.test.jwele.com" target="_blank">测试设备管理</a><i class="fa fa-refresh"></i>
-                </li>
-				
-				<li class="layui-nav-item" lay-unselect>
-                    <a href="http://report.test.jwele.com" target="_blank">测试报告查询</a><i class="fa fa-refresh"></i>
-                </li>
-		 
-		        <li class="layui-nav-item" lay-unselect>
-                    <a href="http://bug.jwele.com/redmine/" target="_blank">Bug管理系统</a><i class="fa fa-refresh"></i>
-                </li>		
+
+    <ul class="layui-nav layui-layout-right" style="color: white;">
+
+        <li class="layui-nav-item">
+            <a href="http://test.jwele.com" target="_blank" style=" color: white;">部门首页</a><i class="fa fa-refresh"></i>
+        </li>
+
+        <li class="layui-nav-item" lay-unselect>
+            <a href="http://bbs.test.jwele.com" target="_blank" style=" color: white;">测试技术论坛</a><i class="fa fa-refresh"></i>
+        </li>
+
+        <li class="layui-nav-item" lay-unselect>
+            <a href="http://driver.test.jwele.com" target="_blank" style=" color: white;">测试驱动下载</a><i class="fa fa-refresh"></i>
+        </li>
+
+        <li class="layui-nav-item" lay-unselect>
+            <a href="http://device.test.jwele.com" target="_blank" style=" color: white;">测试设备管理</a><i class="fa fa-refresh"></i>
+        </li>
+
+        <li class="layui-nav-item" lay-unselect>
+            <a href="http://report.test.jwele.com" target="_blank" style=" color: white;">测试报告查询</a><i class="fa fa-refresh"></i>
+        </li>
+
+        <li class="layui-nav-item" lay-unselect>
+            <a href="http://bug.jwele.com/redmine/" target="_blank" style=" color: white;">Bug管理系统</a><i class="fa fa-refresh"></i>
+        </li>
 
     </ul>
-	 
-		
-		 
-<div class="main-body">
-    <div class="login-main">
-        <div class="login-top">
-            <span>用户登录</span>
-            <span class="bg1"></span>
-            <span class="bg2"></span>
-        </div>
-        <form class="layui-form login-bottom">
-            <div class="center">
-                <div class="item">
-                    <span class="icon icon-2"></span>
-                    <input type="text" name="username" lay-verify="required"  placeholder="请输入登录账号" maxlength="24"/>
-                </div>
-
-                <div class="item">
-                    <span class="icon icon-3"></span>
-                    <input type="password" name="password" lay-verify="required"  placeholder="请输入密码" maxlength="20">
-                    <span class="bind-password icon icon-4"></span>
-                </div>
 
 
-            </div>
-<!--            <div class="tip">-->
-<!--                <span class="icon-nocheck"></span>-->
-<!--                <span class="login-tip">保持登录</span>-->
-<!--                <a href="javascript:" class="forget-password">忘记密码？</a>-->
-<!--            </div>-->
-            <div class="layui-form-item" style="text-align:center; width:100%;height:100%;margin:0px;">
-                <button class="login-btn" lay-submit="" lay-filter="login">立即登录</button>
-            </div>
-        </form>
+    <div class="drop1">
+        <div class="drop"></div>
+        <div class="drop"></div>
+        <div class="drop"></div>
+
     </div>
-</div>
-<!--<div class="footer">-->
-<!--    ©版权所有 2014-2018 叁贰柒工作室<span class="padding-5">|</span><a target="_blank" href="http://www.miitbeian.gov.cn">粤ICP备16006642号-2</a>-->
-<!--</div>-->
-<script src="../lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
-<script>
-    layui.use(['form','jquery'], function () {
-        var $ = layui.jquery,
-            form = layui.form,
-            layer = layui.layer;
+    <!-- <div class="drop2">
+        <div class="drop"></div>
+        <div class="drop"></div>
 
-        // 登录过期的时候，跳出ifram框架
-        if (top.location != self.location) top.location = self.location;
+    </div> -->
+    <div class="main-body">
+        <div class="login-main">
+            <div class="login-top">
+                <span>用户登录</span>
+                <!-- <span class="bg1"></span>
+                <span class="bg2"></span> -->
+            </div>
+            <form class="layui-form login-bottom">
+                <div class="center">
+                    <div class="item">
+                        <span class="icon icon-2" style="vertical-align: middle;"></span>
+                        <input type="text" name="username" lay-verify="required" placeholder="UserName" maxlength="24" />
+                    </div>
 
-        $('.bind-password').on('click', function () {
-            if ($(this).hasClass('icon-5')) {
-                $(this).removeClass('icon-5');
-                $("input[name='password']").attr('type', 'password');
-            } else {
-                $(this).addClass('icon-5');
-                $("input[name='password']").attr('type', 'text');
-            }
-        });
+                    <div class="item">
+                        <span class="icon icon-3" style="vertical-align: middle;"></span>
+                        <input type="password" name="password" lay-verify="required" placeholder="PassWord" maxlength="20">
+                        <span class="bind-password icon icon-4"></span>
+                    </div>
 
-        $('.icon-nocheck').on('click', function () {
-            if ($(this).hasClass('icon-check')) {
-                $(this).removeClass('icon-check');
-            } else {
-                $(this).addClass('icon-check');
-            }
-        });
 
-        // 进行登录操作
-        form.on('submit(login)', function (data) {
-            data = data.field;
-            if (data.username == '') {
-                layer.msg('用户名不能为空');
+                </div>
+                <div class="layui-form-item" style="text-align:center; width:100%;height:100%;margin:0px;">
+                    <button class="login-btn" lay-submit="" lay-filter="login">
+                        <a href="" style="color: white;"><span></span><span></span><span></span><span></span>立即登录</a>
+                        </button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="xiaoacao_footer">
+        <p>JWIPC 设计验证部 © 2021 Eva Yang</p>
+    </div>
+    <script src="../lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+    <script>
+        layui.use(['form', 'jquery'], function() {
+            var $ = layui.jquery,
+                form = layui.form,
+                layer = layui.layer;
+
+            // 登录过期的时候，跳出ifram框架
+            if (top.location != self.location) top.location = self.location;
+
+            $('.bind-password').on('click', function() {
+                if ($(this).hasClass('icon-5')) {
+                    $(this).removeClass('icon-5');
+                    $("input[name='password']").attr('type', 'password');
+                } else {
+                    $(this).addClass('icon-5');
+                    $("input[name='password']").attr('type', 'text');
+                }
+            });
+
+            $('.icon-nocheck').on('click', function() {
+                if ($(this).hasClass('icon-check')) {
+                    $(this).removeClass('icon-check');
+                } else {
+                    $(this).addClass('icon-check');
+                }
+            });
+
+            // 进行登录操作
+            form.on('submit(login)', function(data) {
+                data = data.field;
+                if (data.username == '') {
+                    layer.msg('用户名不能为空');
+                    return false;
+                }
+                if (data.password == '') {
+                    layer.msg('密码不能为空');
+                    return false;
+                }
+                if (data.captcha == '') {
+                    layer.msg('验证码不能为空');
+                    return false;
+                }
+                if (data.username == 'admin' && data.password == 'jwadmin') {
+                    localStorage.setItem("loginType", "admin")
+                    window.location = '../page/index.html';
+                    // layer.msg('登录成功', function () {
+                    //     window.location = 'index.html';
+                    // });
+                } else if ((data.username == 'user' && data.password == '123')) {
+                    localStorage.setItem("loginType", "user")
+
+                    window.location = '../page/index.html';
+                    // layer.msg('登录成功', function () {
+                    //     window.location = 'index.html';
+                    // });
+                } else {
+                    layer.msg('用户名或密码错误');
+                }
+
                 return false;
-            }
-            if (data.password == '') {
-                layer.msg('密码不能为空');
-                return false;
-            }
-            if (data.captcha == '') {
-                layer.msg('验证码不能为空');
-                return false;
-            }
-            if (data.username=='admin'&&data.password=='jwadmin'){
-                localStorage.setItem("loginType","admin")
-                window.location = '../page/index.html';
-                // layer.msg('登录成功', function () {
-                //     window.location = 'index.html';
-                // });
-            }else if ((data.username=='user'&&data.password=='123')){
-                localStorage.setItem("loginType","user")
-
-                window.location = '../page/index.html';
-                // layer.msg('登录成功', function () {
-                //     window.location = 'index.html';
-                // });
-            }else {
-                layer.msg('用户名或密码错误');
-            }
-
-            return false;
+            });
         });
-    });
-</script>
+    </script>
+
 </body>
+
 </html>

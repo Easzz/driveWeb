@@ -78,7 +78,7 @@
             <div id="boxContent" class="box">
                 <div class="box-h">
                     <div class="box2">
-                        <div class="box3"></div>选择平台</div>
+                        <div class="box4"></div>选择驱动类别</div>
                     <!-- <span style="font-weight: 200;font-size: 17px; " id="chooseName">选择平台</span> -->
                 </div>
 
@@ -105,7 +105,7 @@
             $("#contentDiv").find("li").remove();
             $("#back").remove();
             $.ajax({
-                url: apiUrl + '/terrace/getTerraceAndProject',
+                url: apiUrl + '/notTestTerrace/getNotTestTerraceAndProject',
                 type: 'get',
                 dataType: 'json',
                 success: function(res) {
@@ -129,7 +129,7 @@
 
         function clickTerrace(terraceId, terraceName) {
 
-            window.location.href = "projectCardList.html?terraceId=" + terraceId + "&terraceName=" + terraceName;
+            window.location.href = "notTestDetail.html?notTestTerraceId=" + terraceId + "&terraceName=" + terraceName;
 
         }
     </script>

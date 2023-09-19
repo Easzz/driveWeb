@@ -1,4 +1,4 @@
-/**
+﻿/**
 配色方案（如有需要，请自行配置）
  */
 /**头部-配色*/
@@ -354,7 +354,7 @@
 }
 
 .layuimini-menu-left .layui-nav .layui-nav-more {
-    right: 15px;
+    right: 16px;
 }
 
 .layuimini-menu-left .layui-nav .layui-nav-item a:hover {

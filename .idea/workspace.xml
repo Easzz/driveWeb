@@ -1,7 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ae258d80-4893-4f8a-9dba-e666b781651a" name="Default Changelist" comment="" />
+    <list default="true" id="ae258d80-4893-4f8a-9dba-e666b781651a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/p.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/clear.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/page/notTestDetail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/page/notTestDriverMain.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/adminInit.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/adminInit.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/init.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/init.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/userInit.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/userInit.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/layuimini.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/layuimini.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/33.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/bg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/captcha.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/donate_qrcode.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/favicon1.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/home.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/loginbg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/common.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/login - 副本.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/projectCardList.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/projectCardList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/search.html.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/terraceInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/terraceInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/terraceInfo1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/terraceInfo2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/uploadFile.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/uploadFile.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,26 +48,31 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="1tCrc7CCDbJl0rwucRe5uKWA9Ss" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../demo/page/ff" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/work/driveWeb/page",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\work\driveWeb\page" />
+      <recent name="D:\work\import\driveWeb\page" />
       <recent name="$PROJECT_DIR$/../demo/page/ff" />
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -50,6 +89,7 @@
       </list>
     </option>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -61,20 +101,57 @@
       <option name="presentableId" value="Default" />
       <updated>1622283988349</updated>
       <workItem from="1622283989507" duration="5178000" />
+      <workItem from="1629702019433" duration="305000" />
+      <workItem from="1629703069955" duration="7603000" />
+      <workItem from="1629713405181" duration="26000" />
+      <workItem from="1629765650753" duration="2344000" />
+      <workItem from="1694398466793" duration="3406000" />
+      <workItem from="1695028069856" duration="8548000" />
     </task>
+    <task id="LOCAL-00001" summary="`1`">
+      <created>1629703496878</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1629703496878</updated>
+    </task>
+    <task id="LOCAL-00002" summary="`1`2">
+      <created>1629710933497</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1629710933497</updated>
+    </task>
+    <task id="LOCAL-00003" summary="12312">
+      <created>1629713419699</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1629713419699</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="229" y="100" key="SettingsEditor" timestamp="1622347403415">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state x="229" y="100" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1622347403415" />
-    <state x="386" y="97" width="667" height="729" key="find.popup" timestamp="1622347024142">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state x="386" y="97" width="667" height="729" key="find.popup/0.23.1440.877@0.23.1440.877" timestamp="1622347024142" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
+    <MESSAGE value="`1`" />
+    <MESSAGE value="`1`2" />
+    <MESSAGE value="12312" />
+    <option name="LAST_COMMIT_MESSAGE" value="12312" />
   </component>
 </project>
